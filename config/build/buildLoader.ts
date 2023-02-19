@@ -1,32 +1,31 @@
-import webpack from "webpack";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import {BuildOptions} from "./types/config";
+import webpack from 'webpack';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { BuildOptions } from './types/config';
 
 export function buildLoader({ isDev }: BuildOptions): webpack.RuleSetRule[] {
-
     const svgLoader = {
         test: /\.svg$/i,
         use: ['@svgr/webpack'],
-    }
+    };
     const babelLoader = {
         test: /\.(js|jsx|tsx)$/,
         exclude: /node_modules/,
         use: {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
                 presets: ['@babel/preset-env'],
-                "plugins": [
+                plugins: [
                     [
-                        "i18next-extract",
+                        'i18next-extract',
                         {
                             locales: ['ru', 'en'],
                             keyAsDefaultValue: true,
-                        }
-                    ]
-                ]
-            }
-        }
-    }
+                        },
+                    ],
+                ],
+            },
+        },
+    };
 
     const fileLoader = {
         test: /\.(png|jpe?g|gif|woff2)$/i,
@@ -35,7 +34,7 @@ export function buildLoader({ isDev }: BuildOptions): webpack.RuleSetRule[] {
                 loader: 'file-loader',
             },
         ],
-    }
+    };
 
     const cssLoaders = {
         test: /\.s[ac]ss$/i,
@@ -44,30 +43,28 @@ export function buildLoader({ isDev }: BuildOptions): webpack.RuleSetRule[] {
             isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
             // Translates CSS into CommonJS
             {
-                loader: "css-loader",
+                loader: 'css-loader',
                 options: {
                     modules: {
                         auto: (resPath: string) => Boolean(resPath.includes('.module.')),
                         localIdentName: isDev
                             ? '[path][name]__[local]--[hash:base64:5]'
-                            : '[hash:base64:8]'
+                            : '[hash:base64:8]',
                     },
                 },
             },
             // Compiles Sass to CSS
-            "sass-loader",
-
+            'sass-loader',
         ],
-    }
+    };
 
-    //если не использовать тайпскрипт - нужно использовать babel-loader (транспилятор - берет новый стандарт js и перегоняет в старый)
-    //Умеет обрабатывать jsx
+    // если не использовать тайпскрипт - нужно использовать babel-loader (транспилятор - берет новый стандарт js и перегоняет в старый)
+    // Умеет обрабатывать jsx
     const typescriptLoader = { // помогает обрабатывать файлы которые выходят за рамки JavaScript png, gif, css, scss, typeScript
-        test: /\.tsx?$/, //регулярное выражение по которому находим файлы которые необходимо пропустить через loader
+        test: /\.tsx?$/, // регулярное выражение по которому находим файлы которые необходимо пропустить через loader
         use: 'ts-loader',
-        exclude: /node_modules/, //исключаем папку в которой искать ненужно
-    }
-
+        exclude: /node_modules/, // исключаем папку в которой искать ненужно
+    };
 
     return [
         fileLoader,
@@ -75,5 +72,5 @@ export function buildLoader({ isDev }: BuildOptions): webpack.RuleSetRule[] {
         babelLoader,
         typescriptLoader,
         cssLoaders,
-    ]
+    ];
 }

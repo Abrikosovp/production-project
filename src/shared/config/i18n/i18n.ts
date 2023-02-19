@@ -4,18 +4,17 @@ import { initReactI18next } from 'react-i18next';
 import Backend from 'i18next-http-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
-i18n//use подключение плагинов
+i18n// use подключение плагинов
     .use(Backend)
     .use(LanguageDetector)
     .use(initReactI18next)
     .init({
         fallbackLng: 'ru',
-        debug: __IS_DEV__, //спамить в консоль - подкрузку переводов. отсутствую ключи
+        debug: __IS_DEV__, // спамить в консоль - подкрузку переводов. отсутствую ключи
 
         interpolation: {
             escapeValue: false,
-        }
+        },
     });
-
 
 export default i18n;

@@ -1,29 +1,28 @@
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
-import webpack from "webpack";
-import {BuildOptions} from "./types/config";
+import webpack from 'webpack';
+import { BuildOptions } from './types/config';
 
-export function buildPlugins({paths, isDev}: BuildOptions): webpack.WebpackPluginInstance[] {
-
+export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPluginInstance[] {
     const plugins = [
-        new HtmlWebpackPlugin({ //index используем как шаблон
-            template: paths.html
+        new HtmlWebpackPlugin({ // index используем как шаблон
+            template: paths.html,
         }),
-        new webpack.ProgressPlugin(), //следить за прогрессом сборки
+        new webpack.ProgressPlugin(), // следить за прогрессом сборки
         new MiniCssExtractPlugin({
             filename: 'css/[name].[contenthash:8].css',
             chunkFilename: 'css/[name].[contenthash:8].css',
         }),
-        new webpack.DefinePlugin({ //в само приложение покидываем глобальные переменные
+        new webpack.DefinePlugin({ // в само приложение покидываем глобальные переменные
             __IS_DEV__: JSON.stringify(isDev),
         }),
-    ]
+    ];
 
     if (isDev) {
-        plugins.push(new ReactRefreshWebpackPlugin())
-        plugins.push(new webpack.HotModuleReplacementPlugin())
+        plugins.push(new ReactRefreshWebpackPlugin());
+        plugins.push(new webpack.HotModuleReplacementPlugin());
     }
 
     return plugins;
