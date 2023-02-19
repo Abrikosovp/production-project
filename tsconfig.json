@@ -10,7 +10,11 @@
     // esModuleInterop позволяет работать с пакетами, которые используют
     //common js как обычный пакет с помощью import (require()  module.export) = common js - а будем использовать import и export
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true //export default в место (import * as)
+    "allowSyntheticDefaultImports": true, //export default в место (import * as)
+    "baseUrl": "./", //absolute import path
+    "paths": {//absolute import path
+      "*": ["./src/*"]
+    }
   },
   "ts-node": {
     "compilerOptions": {

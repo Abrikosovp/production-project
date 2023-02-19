@@ -2,7 +2,41 @@ import webpack from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import {BuildOptions} from "./types/config";
 
-export function buildLoader({isDev}: BuildOptions): webpack.RuleSetRule[] {
+export function buildLoader({ isDev }: BuildOptions): webpack.RuleSetRule[] {
+
+    const svgLoader = {
+        test: /\.svg$/i,
+        use: ['@svgr/webpack'],
+    }
+    const babelLoader = {
+        test: /\.(js|jsx|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+            loader: "babel-loader",
+            options: {
+                presets: ['@babel/preset-env'],
+                "plugins": [
+                    [
+                        "i18next-extract",
+                        {
+                            locales: ['ru', 'en'],
+                            keyAsDefaultValue: true,
+                        }
+                    ]
+                ]
+            }
+        }
+    }
+
+    const fileLoader = {
+        test: /\.(png|jpe?g|gif|woff2)$/i,
+        use: [
+            {
+                loader: 'file-loader',
+            },
+        ],
+    }
+
     const cssLoaders = {
         test: /\.s[ac]ss$/i,
         use: [
@@ -26,7 +60,6 @@ export function buildLoader({isDev}: BuildOptions): webpack.RuleSetRule[] {
         ],
     }
 
-
     //если не использовать тайпскрипт - нужно использовать babel-loader (транспилятор - берет новый стандарт js и перегоняет в старый)
     //Умеет обрабатывать jsx
     const typescriptLoader = { // помогает обрабатывать файлы которые выходят за рамки JavaScript png, gif, css, scss, typeScript
@@ -37,6 +70,9 @@ export function buildLoader({isDev}: BuildOptions): webpack.RuleSetRule[] {
 
 
     return [
+        fileLoader,
+        svgLoader,
+        babelLoader,
         typescriptLoader,
         cssLoaders,
     ]

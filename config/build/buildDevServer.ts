@@ -6,6 +6,7 @@ export function buildDevServer(options: BuildOptions): DevServerConfiguration {
     return {
         port: options.port,
         open: true,
-        historyApiFallback: true, //при переходе на неизвестный роут не Cannot GET /23
+        historyApiFallback: true, //при переходе на неизвестный роут не Cannot GET /23]
+        hot: true,
     }
 }
