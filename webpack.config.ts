@@ -1,6 +1,3 @@
-// const path = require('path');
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const webpack = require('webpack'); //to access built-in plugins
 import webpack from 'webpack';
 import path from 'path';
 import { buildWebpackConfig } from './config/build/buildWebpackConfig';
