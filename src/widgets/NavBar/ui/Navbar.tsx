@@ -30,7 +30,7 @@ export const Navbar = ({ className }: NavbarProps) => {
                 {t('Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n'
                     + ' Architecto autem magni, nam quo recusandae unde ut veniam.\n'
                     + ' Commodi dignissimos enim eos fuga illum veniam. Earum error\n'
-                    + ' possimus qui recusandae suscipit!')}
+                    + ' possimus qui recusandae!')}
             </Modal>
         </div>
     );
