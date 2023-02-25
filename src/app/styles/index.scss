@@ -4,9 +4,7 @@
 @import "src/app/styles/themes/normal";
 
 .app {
-    font: var(--font-m);
     background: var(--bg-color);
-    color: var(--primary-color);
     min-height: 100vh;
 }
 
@@ -17,4 +15,9 @@
 .page-wrapper {
     flex-grow: 1;
     padding: 20px;
+}
+
+body {
+    font: var(--font-m);
+    color: var(--primary-color);
 }
