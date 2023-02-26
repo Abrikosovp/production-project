@@ -20,9 +20,9 @@ Primary.args = {
     children: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
 };
 
-export const PrimaryDark = Template.bind({});
-PrimaryDark.args = {
+export const Dark = Template.bind({});
+Dark.args = {
     isOpen: true,
     children: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
 };
-PrimaryDark.decorators = [ThemeDecorator(Theme.DARK)];
+Dark.decorators = [ThemeDecorator(Theme.DARK)];
