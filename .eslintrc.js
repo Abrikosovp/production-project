@@ -39,8 +39,6 @@ module.exports = {
         'jsx-a11y/click-events-have-key-events': 'off',
         'jsx-a11y/no-static-element-interactions': 'off',
         'no-underscore-dangle': 'off',
-        'react-hooks/rules-of-hooks': 'error', // Проверяем правила хуков
-        'react-hooks/exhaustive-deps': 'error', // Проверяем зависимости эффекта
         'i18next/no-literal-string': ['error', {
             markupOnly: true,
             ignoreAttribute: ['data-testid', 'to'],
@@ -49,6 +47,9 @@ module.exports = {
             ignoreComments: true,
             code: 100,
         }],
+        'react-hooks/rules-of-hooks': 'error', // Проверяем правила хуков
+        'react-hooks/exhaustive-deps': 'error', // Проверяем зависимости эффекта
+        'no-param-reassign': 'off', // Проверяем зависимости эффекта
     },
     globals: {
         __IS_DEV__: true,
