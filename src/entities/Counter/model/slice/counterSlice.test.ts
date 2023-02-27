@@ -8,7 +8,7 @@ describe('counterSlice.test', () => {
             counterReducer(state, counterActions.decrement()),
         ).toEqual({ value: 9 });
     });
-    test('decrement', () => {
+    test('increment', () => {
         const state: CounterSchema = { value: 10 };
         expect(
             counterReducer(state, counterActions.increment()),

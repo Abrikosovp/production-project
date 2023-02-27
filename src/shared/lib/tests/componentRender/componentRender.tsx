@@ -21,7 +21,6 @@ export function componentRouter(component: ReactNode, options: componentOptions 
                     {component}
                 </I18nextProvider>
             </MemoryRouter>
-        </StoreProvider>
-        ,
+        </StoreProvider>,
     );
 }
