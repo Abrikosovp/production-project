@@ -16,11 +16,6 @@ export function useTheme(): UseThemeResult {
         localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
     };
 
-    useEffect(() => {
-        toggleTheme();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
     return {
         theme,
         toggleTheme,
