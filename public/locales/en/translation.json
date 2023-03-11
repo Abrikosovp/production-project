@@ -9,5 +9,8 @@
   "Главная": "Main",
   "Язык длинный": "English",
   "Войти": "Войти",
-  "decrement": "decrement"
+  "decrement": "decrement",
+  "Введите username": "Change username",
+  "Введите пароль": "Change password",
+  "Введите текст": "Change text"
 }

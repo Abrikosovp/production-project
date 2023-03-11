@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from './ThemeContext';
 
 interface UseThemeResult {
@@ -16,7 +16,13 @@ export function useTheme(): UseThemeResult {
         localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
     };
 
+    useEffect(() => {
+        toggleTheme();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     return {
-        theme, toggleTheme,
+        theme,
+        toggleTheme,
     };
 }
