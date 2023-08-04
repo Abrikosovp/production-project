@@ -1,19 +1,13 @@
-import {useState} from "react";
-import classes from './AboutPage.module.scss';
+import {useTranslation} from "react-i18next";
 
 
 const AboutPage = () => {
 
-    const [count, setCount] = useState(0);
-
-    const increment = () => {
-        setCount(count + 1)
-    }
+    const { t } = useTranslation();
 
     return (
-        <div className={classes.btm}>
-            <h1>{count}</h1>
-            <button onClick={increment}>increment</button>
+        <div >
+            {t('О сайте')}
         </div>
     );
 };
