@@ -13,7 +13,7 @@ export const LangSwitcher = ({ className }: ThemeSwitcherProps) => {
     const { t, i18n } = useTranslation();
 
     const toggleLang =() => {
-        i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru')
+        i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
     }
 
 
