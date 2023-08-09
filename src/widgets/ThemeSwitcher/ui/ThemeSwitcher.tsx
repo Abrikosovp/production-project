@@ -1,17 +1,16 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import cls from './ThemeSwitcher.module.scss';
-import {Theme, useTheme} from "app/providers/ThemeProvider";
+import { Theme, useTheme } from 'app/providers/ThemeProvider';
 
 import DarkIcon from 'shared/assets/icons/theme-dark.svg';
 import LightIcon from 'shared/assets/icons/theme-light.svg';
-import { AppButton } from "shared/ui/AppButton/AppButton";
+import { AppButton } from 'shared/ui/AppButton/AppButton';
+import cls from './ThemeSwitcher.module.scss';
 
 interface ThemeSwitcherProps {
     className?: string;
 }
 
-export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
-
+export function ThemeSwitcher({ className }: ThemeSwitcherProps) {
     const { toggleTheme, theme } = useTheme();
 
     return (
@@ -20,8 +19,8 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
             onClick={toggleTheme}
         >
             {
-                theme === Theme.DARK ? <DarkIcon/> : <LightIcon/>
+                theme === Theme.DARK ? <DarkIcon /> : <LightIcon />
             }
         </AppButton>
     );
-};
+}
